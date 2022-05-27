@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Adding the fields for cardknox credentials -->
+    <record id="pos_payment_method_form_inherit_pos_cardknox" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.inherit.pos.cardknox</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='use_payment_terminal']" position="after">
+                <field name="cardknox_xkey"
+                       attrs="{'invisible': [('use_payment_terminal', '!=', 'cardknox')],
+                        'required': [('use_payment_terminal', '=', 'cardknox')]}"/>
+                <field name="cardknox_xsoftware_name"
+                       attrs="{'invisible': [('use_payment_terminal', '!=', 'cardknox')],
+                       'required': [('use_payment_terminal', '=', 'cardknox')]}"/>
+                <field name="cardknox_xversion"
+                       attrs="{'invisible': [('use_payment_terminal', '!=', 'cardknox')],
+                       'required': [('use_payment_terminal', '=', 'cardknox')]}"/>
+                <field name="cardknox_xsoftware_version"
+                       attrs="{'invisible': [('use_payment_terminal', '!=', 'cardknox')],
+                       'required': [('use_payment_terminal', '=', 'cardknox')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
